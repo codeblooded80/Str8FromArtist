@@ -1,56 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?><!-- activity_main.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
-
-        <Button
-            android:id="@+id/scanButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Scan a QR Code" />
-
-        <Button
-            android:id="@+id/playButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_below="@id/scanButton"
-            android:text="Play Audio" />
-
-    </LinearLayout>
+    <!-- Include the custom title bar -->
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/title_bar" />
 
     <com.journeyapps.barcodescanner.DecoratedBarcodeView
         android:id="@+id/qrcodeScanner"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:visibility="gone" />
-
-    <!--TextView
-        android:id="@+id/qrCodeText"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_below="@id/scanButton"
+        android:layout_height="350dp"
+        android:layout_below="@id/toolbar"
         android:layout_marginTop="16dp"
-        android:text=""
-        android:textSize="20sp" /-->
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="330dp"
-        android:layout_below="@id/scanButton"
+        android:layout_height="350dp"
+        android:layout_below="@id/toolbar"
         android:layout_gravity="center"
+        android:layout_marginTop="16dp"
         android:scaleType="centerInside"
-        android:visibility="gone"
-        android:src="@android:drawable/ic_menu_gallery" />
+        android:src="@android:drawable/ic_menu_gallery"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/scanResultText"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@id/imageView"
+        android:layout_gravity="center"
+        android:paddingLeft="16dp"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@id/scanResultText"
+        android:layout_gravity="center"
+        android:paddingLeft="16dp"
+        android:text="Touch anywhere on the picture to hear details"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/scanButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:paddingRight="20dp"
+        android:text="Scan a QR Code" />
 
 
-</LinearLayout>
+</RelativeLayout>
