@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements BarcodeCallback {
     private TextView scanResultText;
     private MediaPlayer mediaPlayer;
     private BeepManager beepManager;
+    private String scanResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements BarcodeCallback {
             imageView.setVisibility(View.GONE);
             scanResultText.setVisibility(View.GONE);
             infoText.setVisibility(View.GONE);
+            if (null != mediaPlayer) {
+                mediaPlayer.stop();
+            }
             qrCodeView.setVisibility(View.VISIBLE);
             qrCodeView.initializeFromIntent(getIntent());
             qrCodeView.decodeSingle(this);
@@ -59,21 +63,21 @@ public class MainActivity extends AppCompatActivity implements BarcodeCallback {
         scanResultText = findViewById(R.id.scanResultText);
         infoText = findViewById(R.id.infoText);
 
-        clickImageQuadrant();
+        touchImageQuadrantAndPlayAudio();
 
     }
 
     @Override
     public void barcodeResult(BarcodeResult result) {
         // Handle the scan result here
-        String scanResult = result.getText();
+        scanResult = result.getText();
         System.out.println("Scan Result: " + scanResult);
         showScanResultText("Match found: " + scanResult);
         beepManager.playBeepSoundAndVibrate();
-        findAndDisplayImage(scanResult);
+        matchAndDisplayImage();
     }
 
-    private void findAndDisplayImage(String scanResult) {
+    private void matchAndDisplayImage() {
         String imagePath;
 
         switch (scanResult) {
@@ -107,26 +111,24 @@ public class MainActivity extends AppCompatActivity implements BarcodeCallback {
             // Display a placeholder image if the file couldn't be loaded.
             imageView.setImageResource(android.R.drawable.ic_menu_gallery);
         }
-
     }
 
     private void playAudio(String audioPath) {
         try {
+            if (null != mediaPlayer) {
+                mediaPlayer.stop();
+            }
             // Create and initialize the MediaPlayer.
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setDataSource(audioPath);
             mediaPlayer.prepare();
-
-            //playButton.setOnClickListener(v -> {
             mediaPlayer.start();
-            //});
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void clickImageQuadrant() {
+    private void touchImageQuadrantAndPlayAudio() {
 
         imageView.setOnTouchListener((view, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -142,16 +144,44 @@ public class MainActivity extends AppCompatActivity implements BarcodeCallback {
 
                 if (x < centerX && y < centerY) {
                     quadrant = "Top Left Quadrant";
-                    audioPath = "/storage/emulated/0/EasyVoiceRecorder/Quad1.wav";
+                    if (scanResult.equals("Pic1"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic1-quadrant1.wav";
+                    else if (scanResult.equals("Pic2"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic2-quadrant1.wav";
+                    else if (scanResult.equals("Pic3"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic3-quadrant1.wav";
+                    else
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic4-quadrant1.wav";
                 } else if (x >= centerX && y < centerY) {
                     quadrant = "Top Right Quadrant";
-                    audioPath = "/storage/emulated/0/EasyVoiceRecorder/Quad2.wav";
+                    if (scanResult.equals("Pic1"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic1-quadrant2.wav";
+                    else if (scanResult.equals("Pic2"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic2-quadrant2.wav";
+                    else if (scanResult.equals("Pic3"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic3-quadrant2.wav";
+                    else
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic4-quadrant2.wav";
                 } else if (x < centerX && y >= centerY) {
                     quadrant = "Bottom Left Quadrant";
-                    audioPath = "/storage/emulated/0/EasyVoiceRecorder/Quad3.wav";
+                    if (scanResult.equals("Pic1"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic1-quadrant3.wav";
+                    else if (scanResult.equals("Pic2"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic2-quadrant3.wav";
+                    else if (scanResult.equals("Pic3"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic3-quadrant3.wav";
+                    else
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic4-quadrant3.wav";
                 } else {
                     quadrant = "Bottom Right Quadrant";
-                    audioPath = "/storage/emulated/0/EasyVoiceRecorder/Quad4.wav";
+                    if (scanResult.equals("Pic1"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic1-quadrant4.wav";
+                    else if (scanResult.equals("Pic2"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic2-quadrant4.wav";
+                    else if (scanResult.equals("Pic3"))
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic3-quadrant4.wav";
+                    else
+                        audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic4-quadrant4.wav";
                 }
 
                 // Display the quadrant in a Toast
@@ -177,6 +207,8 @@ public class MainActivity extends AppCompatActivity implements BarcodeCallback {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mediaPlayer.release();
+        mediaPlayer = null;
     }
 
     @Override

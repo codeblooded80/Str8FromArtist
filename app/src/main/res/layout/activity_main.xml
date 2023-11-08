@@ -43,11 +43,11 @@
     <TextView
         android:id="@+id/infoText"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:layout_below="@id/scanResultText"
         android:layout_gravity="center"
         android:paddingLeft="16dp"
-        android:text="Touch anywhere on the picture to hear details"
+        android:text="Touch any quadrant of the picture to hear details from the artist!"
         android:textSize="16sp"
         android:visibility="gone" />
 
@@ -61,7 +61,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:paddingRight="20dp"
-        android:text="Scan a QR Code" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Scan an Art's QR Code" />
 
 
 </RelativeLayout>
