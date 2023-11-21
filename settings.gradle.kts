@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Str8FromArtist"
+rootProject.name = "Str8FromArtist_v2"
 include(":app")
  

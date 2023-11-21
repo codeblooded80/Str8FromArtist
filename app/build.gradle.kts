@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.mh.str8fromartist"
+    namespace = "com.mh.str8fromartist_v2"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.mh.str8fromartist"
+        applicationId = "com.mh.str8fromartist_v2"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -36,6 +36,13 @@ dependencies {
 
     implementation("com.google.zxing:core:3.4.1")
     implementation("com.journeyapps:zxing-android-embedded:4.2.0")
+    /*implementation("javax.mail:mail:1.4.1")
+    implementation("javax.activation:activation:1.1.1")
+    implementation(files("libs/additionnal.jar"))*/
+
+    implementation("com.sun.mail:android-mail:1.6.0")
+    implementation("com.sun.mail:android-activation:1.6.0")
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

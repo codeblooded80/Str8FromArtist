@@ -14,18 +14,18 @@
     <com.journeyapps.barcodescanner.DecoratedBarcodeView
         android:id="@+id/qrcodeScanner"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="325dp"
         android:layout_below="@id/toolbar"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:visibility="gone" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="325dp"
         android:layout_below="@id/toolbar"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:scaleType="centerInside"
         android:src="@android:drawable/ic_menu_gallery"
         android:visibility="gone" />
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_below="@id/imageView"
-        android:layout_gravity="center"
+        android:layout_centerInParent="true"
         android:paddingLeft="16dp"
         android:textSize="20sp"
         android:visibility="gone" />
@@ -47,9 +47,28 @@
         android:layout_below="@id/scanResultText"
         android:layout_gravity="center"
         android:paddingLeft="16dp"
-        android:text="Touch any quadrant of the picture to hear details from the artist!"
-        android:textSize="16sp"
+        android:text="Touch any quadrant of the art to hear details from the artist!"
+        android:textSize="12sp"
         android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/thumbsUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/infoText"
+        android:background="@drawable/ic_thumbs_up"
+        android:visibility="gone"
+        android:contentDescription="Thumbs Up" />
+
+    <Button
+        android:id="@+id/shareFeedbackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/thumbsUpButton"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:text="Share Feedback" />
 
     <Button
         android:id="@+id/scanButton"
@@ -63,7 +82,7 @@
         android:paddingRight="20dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Scan an Art's QR Code" />
+        android:text="Scan an Artwork's QR Code" />
 
 
 </RelativeLayout>

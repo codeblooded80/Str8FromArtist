@@ -1,4 +1,4 @@
-package com.mh.str8fromartist;
+package com.mh.str8fromartist_v2;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.mh.str8fromartist", appContext.getPackageName());
+        assertEquals("com.mh.str8fromartist_v2", appContext.getPackageName());
     }
 }

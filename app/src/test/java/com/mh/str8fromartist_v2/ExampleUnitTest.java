@@ -1,4 +1,4 @@
-package com.mh.str8fromartist;
+package com.mh.str8fromartist_v2;
 
 import org.junit.Test;
 
