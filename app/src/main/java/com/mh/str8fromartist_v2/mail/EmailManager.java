@@ -8,7 +8,7 @@ public class EmailManager {
 
     public void sendEmail(Email email) {
         final String username = "legolegends.first@gmail.com"; // Your Gmail email address
-        final String password = "eccm cygn aust ojbp"; // Your Gmail password
+        final String password = ""; // Your Gmail password
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
