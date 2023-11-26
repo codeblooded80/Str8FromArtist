@@ -1,4 +1,4 @@
-package com.mh.str8fromartist_v2.mail;
+package com.mh.str8fromartist_v3.mail;
 
 public class Email {
 

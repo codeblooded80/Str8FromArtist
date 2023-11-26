@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Str8FromArtist_v2" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Base.Theme.Str8FromArtist_v3" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">@color/button</item>
     </style>
 
-    <style name="Theme.Str8FromArtist_v2" parent="Base.Theme.Str8FromArtist_v2" />
+    <style name="Theme.Str8FromArtist_v3" parent="Base.Theme.Str8FromArtist_v3" />
 </resources>

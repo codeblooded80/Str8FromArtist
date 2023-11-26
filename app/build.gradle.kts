@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.mh.str8fromartist_v2"
+    namespace = "com.mh.str8fromartist_v3"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.mh.str8fromartist_v2"
+        applicationId = "com.mh.str8fromartist_v3"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

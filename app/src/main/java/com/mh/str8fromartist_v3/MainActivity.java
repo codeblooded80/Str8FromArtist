@@ -1,4 +1,4 @@
-package com.mh.str8fromartist_v2;
+package com.mh.str8fromartist_v3;
 
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
@@ -24,8 +24,8 @@ import com.google.zxing.client.android.BeepManager;
 import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
-import com.mh.str8fromartist_v2.mail.Email;
-import com.mh.str8fromartist_v2.mail.EmailManager;
+import com.mh.str8fromartist_v3.mail.Email;
+import com.mh.str8fromartist_v3.mail.EmailManager;
 
 import java.util.List;
 

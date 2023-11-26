@@ -1,4 +1,4 @@
-package com.mh.str8fromartist_v2.mail;
+package com.mh.str8fromartist_v3.mail;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
