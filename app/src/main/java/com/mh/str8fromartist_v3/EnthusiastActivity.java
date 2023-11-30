@@ -160,6 +160,30 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 float x = event.getX();
                 float y = event.getY();
+                //System.out.println("X, Y: " + x + ", " + y);
+
+                int width = view.getWidth();
+                int height = view.getHeight();
+
+                int part = getPart((int)x,(int)y,width, height);
+                //System.out.println("part: "+part);
+                String quadrant = "Quadrant "+part;
+                //System.out.println("quadrant: "+quadrant);
+
+                String audioPath;
+
+                if (scanResult.equals("Pic1"))
+                    audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic1-quadrant"+part+".wav";
+                else if (scanResult.equals("Pic2"))
+                    audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic2-quadrant"+part+".wav";
+                else if (scanResult.equals("Pic3"))
+                    audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic3-quadrant"+part+".wav";
+                else
+                    audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic4-quadrant"+part+".wav";
+
+            /*if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                float x = event.getX();
+                float y = event.getY();
                 System.out.println("X, Y: " + x + ", " + y);
 
                 float centerX = view.getWidth() / 2f;
@@ -208,7 +232,7 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic3-quadrant4.wav";
                     else
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic4-quadrant4.wav";
-                }
+                }*/
 
                 // Display the quadrant in a Toast
                 showQuadrantToast(quadrant);
@@ -216,6 +240,16 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
             }
             return true; // Return true to consume the touch event.
         });
+    }
+
+    private int getPart(int x, int y, int width, int height) {
+        int partWidth = width/3;
+        int partHeight = height/4;
+
+        int column= x / partWidth;
+        int row = y / partHeight;
+
+        return ((row*3) + column + 1);
     }
 
     private void thumbsUpHandler() {
