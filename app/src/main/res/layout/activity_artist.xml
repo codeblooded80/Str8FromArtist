@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- Include the custom title bar -->
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/title_bar" />
+
+    <TextView
+        android:id="@+id/simpleText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/toolbar"
+        android:paddingTop="16dp"
+        android:textSize="20sp"
+        android:text="Welcome to the ARTIST View"/>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/simpleText"
+        android:stretchColumns="*">
+
+        <!-- Header Row -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Artwork"
+                android:textStyle="bold"
+                android:background="@drawable/table_header_border"
+                android:padding="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Views"
+                android:textStyle="bold"
+                android:background="@drawable/table_header_border"
+                android:padding="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pop Quad"
+                android:textStyle="bold"
+                android:background="@drawable/table_header_border"
+                android:padding="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Likes"
+                android:textStyle="bold"
+                android:background="@drawable/table_header_border"
+                android:padding="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comments"
+                android:textStyle="bold"
+                android:background="@drawable/table_header_border"
+                android:padding="8dp"/>
+
+            <!-- Add more headers as needed -->
+
+        </TableRow>
+
+        <!-- Data Rows will be added dynamically -->
+
+    </TableLayout>
+
+</RelativeLayout>

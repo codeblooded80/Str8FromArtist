@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?><!-- activity_main.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- Include the custom title bar -->
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/title_bar" />
+
+    <TextView
+        android:id="@+id/simpleText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/toolbar"
+        android:paddingTop="10dp"
+        android:textSize="20sp"
+        android:text="Welcome to Enthusiast View"/>
+
+    <com.journeyapps.barcodescanner.DecoratedBarcodeView
+        android:id="@+id/qrcodeScanner"
+        android:layout_width="match_parent"
+        android:layout_height="325dp"
+        android:layout_below="@id/simpleText"
+        android:layout_marginTop="5dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="325dp"
+        android:layout_below="@id/toolbar"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:scaleType="centerInside"
+        android:src="@android:drawable/ic_menu_gallery"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/scanResultText"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@id/imageView"
+        android:layout_centerInParent="true"
+        android:paddingLeft="16dp"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/scanResultText"
+        android:layout_gravity="center"
+        android:paddingLeft="16dp"
+        android:text="Touch any quadrant of the art to hear details from the artist!"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/thumbsUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/infoText"
+        android:background="@drawable/ic_thumbs_up"
+        android:visibility="gone"
+        android:contentDescription="Thumbs Up" />
+
+    <Button
+        android:id="@+id/shareFeedbackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/thumbsUpButton"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:text="Share Feedback" />
+
+    <Button
+        android:id="@+id/scanButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:paddingRight="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Scan an Artwork's QR Code" />
+
+
+</RelativeLayout>
