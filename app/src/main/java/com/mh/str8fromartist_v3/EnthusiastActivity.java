@@ -173,7 +173,7 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
                 String audioPath;
 
                 if (scanResult.equals("Pic1"))
-                    audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic1-quadrant"+part+".wav";
+                    audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic1-quadrant"+part+".wav" ;
                 else if (scanResult.equals("Pic2"))
                     audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic2-quadrant"+part+".wav";
                 else if (scanResult.equals("Pic3"))
