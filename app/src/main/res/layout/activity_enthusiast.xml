@@ -39,6 +39,16 @@
         android:src="@android:drawable/ic_menu_gallery"
         android:visibility="gone" />
 
+    <com.mh.str8fromartist_v3.util.DashedLinesView
+        android:id="@+id/dashedLinesView"
+        android:layout_width="match_parent"
+        android:layout_height="325dp"
+        android:layout_below="@id/toolbar"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:scaleType="centerInside"
+        android:visibility="gone" />
+
     <TextView
         android:id="@+id/scanResultText"
         android:layout_width="match_parent"

@@ -28,6 +28,7 @@ import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.mh.str8fromartist_v3.mail.Email;
 import com.mh.str8fromartist_v3.mail.EmailManager;
+import com.mh.str8fromartist_v3.util.DashedLinesView;
 
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
     private DecoratedBarcodeView qrCodeView;
     private Button scanButton;
     private ImageView imageView;
+    private DashedLinesView dashedLinesView;
     private TextView infoText;
     private TextView scanResultText;
     private MediaPlayer mediaPlayer;
@@ -60,6 +62,7 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
             qrCodeView.pause();
             // Start the scanning process
             imageView.setVisibility(View.GONE);
+            dashedLinesView.setVisibility(View.GONE);
             scanResultText.setVisibility(View.GONE);
             infoText.setVisibility(View.GONE);
             thumbsUpButton.setVisibility(View.GONE);
@@ -74,6 +77,8 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
         });
 
         imageView = findViewById(R.id.imageView);
+        dashedLinesView = findViewById(R.id.dashedLinesView);
+
 
         scanResultText = findViewById(R.id.scanResultText);
         infoText = findViewById(R.id.infoText);
@@ -98,39 +103,76 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
     private void matchAndDisplayImage() {
         String imgName = "";
         String picName;
+        String imagePath = "";
 
         switch (scanResult) {
             case "Pic1":
                 imgName = "love_yourself";
                 picName = "Love Yourself!";
+                imagePath = "";
                 break;
 
             case "Pic2":
                 imgName = "lavender_field";
                 picName = "Lavender Field";
+                imagePath = "";
                 break;
 
             case "Pic3":
                 imgName = "humming_bird";
                 picName = "A Humming Bird";
+                imagePath = "";
                 break;
 
             case "Pic4":
                 imgName = "ladybug_leaf";
                 picName = "A Ladybug on a leaf";
+                imagePath = "";
+                break;
+
+            case "Art1":
+                imgName = "art1";
+                picName = "Art 1";
+                imagePath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/images/art1.jpg";
+                break;
+
+            case "Art2":
+                imgName = "art2";
+                picName = "Art 2";
+                imagePath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/images/art2.jpg";
+                break;
+
+            case "Art3":
+                imgName = "art3";
+                picName = "Art 3";
+                imagePath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/images/art3.jpg";
+                break;
+
+            case "Art4":
+                imgName = "art4";
+                picName = "Art 4";
+                imagePath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/images/art4.jpg";
                 break;
 
             default:
                 imgName = "love_yourself";
                 picName = "";
+                imagePath = "";
                 break;
         }
         showScanResultText(picName);
 
         qrCodeView.setVisibility(View.GONE);
         imageView.setVisibility(View.VISIBLE);
+        dashedLinesView.setVisibility(View.VISIBLE);
+
         if (imgName != null) {
-            imageView.setImageDrawable(getImageResources(imgName));
+            if(imgName.contains("art") && !imagePath.isEmpty()) {
+                Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+                imageView.setImageBitmap(bitmap);
+            } else {
+                imageView.setImageDrawable(getImageResources(imgName));
+            }
         } else {
             // Display a placeholder image if the file couldn't be loaded.
             imageView.setImageResource(android.R.drawable.ic_menu_gallery);
@@ -176,8 +218,17 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic2-quadrant1.wav";
                     else if (scanResult.equals("Pic3"))
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic3-quadrant1.wav";
-                    else
+                    else if (scanResult.equals("Pic4"))
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic4-quadrant1.wav";
+
+                    else if (scanResult.equals("Art1"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art1-q1.3gp";
+                    else if (scanResult.equals("Art2"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art2-q1.3gp";
+                    else if (scanResult.equals("Art3"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art3-q1.3gp";
+                    else
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art4-q1.3gp";
                 } else if (x >= centerX && y < centerY) {
                     quadrant = "Top Right Quadrant";
                     if (scanResult.equals("Pic1"))
@@ -186,8 +237,17 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic2-quadrant2.wav";
                     else if (scanResult.equals("Pic3"))
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic3-quadrant2.wav";
-                    else
+                    else if (scanResult.equals("Pic4"))
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic4-quadrant2.wav";
+
+                    else if (scanResult.equals("Art1"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art1-q2.3gp";
+                    else if (scanResult.equals("Art2"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art2-q2.3gp";
+                    else if (scanResult.equals("Art3"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art3-q2.3gp";
+                    else
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art4-q2.3gp";
                 } else if (x < centerX && y >= centerY) {
                     quadrant = "Bottom Left Quadrant";
                     if (scanResult.equals("Pic1"))
@@ -196,8 +256,17 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic2-quadrant3.wav";
                     else if (scanResult.equals("Pic3"))
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic3-quadrant3.wav";
-                    else
+                    else if (scanResult.equals("Pic4"))
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic4-quadrant3.wav";
+
+                    else if (scanResult.equals("Art1"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art1-q3.3gp";
+                    else if (scanResult.equals("Art2"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art2-q3.3gp";
+                    else if (scanResult.equals("Art3"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art3-q3.3gp";
+                    else
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art4-q3.3gp";
                 } else {
                     quadrant = "Bottom Right Quadrant";
                     if (scanResult.equals("Pic1"))
@@ -206,8 +275,17 @@ public class EnthusiastActivity extends AppCompatActivity implements BarcodeCall
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic2-quadrant4.wav";
                     else if (scanResult.equals("Pic3"))
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic3-quadrant4.wav";
-                    else
+                    else if (scanResult.equals("Pic4"))
                         audioPath = "/storage/emulated/0/EasyVoiceRecorder/Pic4-quadrant4.wav";
+
+                    else if (scanResult.equals("Art1"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art1-q4.3gp";
+                    else if (scanResult.equals("Art2"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art2-q4.3gp";
+                    else if (scanResult.equals("Art3"))
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art3-q4.3gp";
+                    else
+                        audioPath = "/storage/emulated/0/Android/data/com.mh.str8fromartist_v3/files/audio/art4-q4.3gp";
                 }
 
                 // Display the quadrant in a Toast
